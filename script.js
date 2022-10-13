@@ -109,8 +109,15 @@ function generatePassword() {
 
   var passwordOptions = [];
 
+  var useUppercase = false;
+  var useLowercase = false;
+  var useNumbers = false;
+  var useSpecial = false;
+
+  while (!useLowercase && !useNumbers && !useSpecial && !useUppercase)
+  {
   //Do you want to use uppercase
-  var useUppercase = confirm("Would you like to use uppercase letters?");
+  useUppercase = confirm("Would you like to use uppercase letters?");
   console.log(useUppercase);
 
   if (useUppercase) {
@@ -136,11 +143,15 @@ function generatePassword() {
   //Do you want to use special
   var useSpecial = confirm("Would you like to use special characters?");
   console.log(useSpecial);
+
   if (useSpecial) {
     passwordOptions = passwordOptions.concat(special);
   }
+  }
 
-  var password=''
+  console.log(passwordOptions);
+
+  var password='';
 
   for (var i = 0; i < passwordLength; i++){
     password = password + passwordOptions[getRandomInt(passwordOptions.length)];
